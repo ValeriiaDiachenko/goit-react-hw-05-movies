@@ -5,7 +5,9 @@ export const CastGallery = ({ credits }) => {
   return (
     <>
       <CastList>
-        {credits &&
+        {credits === null ? (
+          <Paragraph>Oops! We don't have any information about casts for this movie.</Paragraph>
+        ) : (
           credits.map(({ id, profile_path, name, character }) => {
             return (
               <CastItem key={id}>
@@ -21,7 +23,7 @@ export const CastGallery = ({ credits }) => {
                 <Paragraph>Character: {character}</Paragraph>
               </CastItem>
             );
-          })}
+          }))}
       </CastList>
     </>
   );
